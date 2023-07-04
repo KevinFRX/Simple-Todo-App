@@ -1,0 +1,14 @@
+.dialog-container {
+    width: 400px;
+    border-radius: 8px;
+    border: 1px solid #888;
+}
+
+.dialog-container::backdrop {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.dialog-buttons {
+    display: flex;
+    gap: 20px;
+}
