@@ -49,11 +49,13 @@ function ModalDialog({
     >
       <h3>{title}</h3>
 
-      {children}
+      <div className="children-container">
+        {children}
+      </div>
 
       <div className="dialog-buttons">
-        <button onClick={proceedAndClose}>{acceptLabel}</button>
-        <button onClick={onClose}>{cancelLabel}</button>
+        <button className="accept-button" onClick={proceedAndClose}>{acceptLabel}</button>
+        <button className="cancel-button" onClick={onClose}>{cancelLabel}</button>
       </div>
     </dialog>
   );

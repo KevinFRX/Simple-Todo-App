@@ -2,13 +2,27 @@
     width: 400px;
     border-radius: 8px;
     border: 1px solid #888;
+    box-shadow: 1px 1px 2px rgb(50, 50, 50);
 }
 
 .dialog-container::backdrop {
     background: rgba(0, 0, 0, 0.3);
 }
 
+.children-container {
+    display: flex;
+    padding-bottom: 20px;
+}
+
 .dialog-buttons {
     display: flex;
     gap: 20px;
+}
+
+.accept-button {
+    background-color: rgb(61, 216, 61);
+}
+
+.cancel-button {
+    background-color: rgb(235, 64, 64);
 }

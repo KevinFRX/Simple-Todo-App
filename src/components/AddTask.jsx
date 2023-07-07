@@ -15,11 +15,11 @@ export default function AddTask({ onCreate }) {
     return (
         <div>
             <div>
-                <button onClick={() => setShowAddTodoModal(true)}>Add Task</button>
+                <button className="add-task-button" onClick={() => setShowAddTodoModal(true)}>Add Task</button>
             </div>
 
             <ModalDialog title="Add Task" isOpened={showAddTodoModal} onProceed={handleProceed} onClose={() => setShowAddTodoModal(false)} acceptLabel="Add" cancelLabel="Cancel">
-                <input ref={inputRef} type="text" placeholder="A new task" />
+                <input className="add-task-input" ref={inputRef} type="text" placeholder="A new task" />
             </ModalDialog>
         </div>
     )

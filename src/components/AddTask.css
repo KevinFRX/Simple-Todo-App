@@ -2,3 +2,12 @@
     position: fixed;
     z-index: 1;
 }
+
+.add-task-input {
+    flex-grow: 1;
+}
+
+.add-task-button {
+    background-color: rgb(152, 62, 236);
+    color: white;
+}
