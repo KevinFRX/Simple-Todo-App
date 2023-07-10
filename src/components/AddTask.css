@@ -4,7 +4,16 @@
 }
 
 .add-task-input {
+    padding: 10px;
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 5px;
+    width: 300px;
     flex-grow: 1;
+    font-size: 16px;
+}
+
+.add-task-input:hover {
+    border-color: black;
 }
 
 .add-task-button {
