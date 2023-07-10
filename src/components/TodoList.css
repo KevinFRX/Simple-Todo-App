@@ -1,3 +1,24 @@
+.header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    margin-right: 10px;
+    flex-grow: 2;
+}
+
+.add-task-container {
+    display: flex;
+    flex-grow: 1;
+    justify-content: end;
+    padding-right: 10px;
+}
+
 .even-row {
     background-color: rgb(230, 230, 230);
 }

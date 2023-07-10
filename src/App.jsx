@@ -1,16 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import useLocalStorage from "./hooks/useLocalStorage"
 
-// import useApiService from './services/useApiService'
-import AddTask from './components/AddTask'
+import Header from "./components/Header";
 import TodoList from './components/TodoList'
 import './App.css'
 
 function App() {
-    // const { getToDos } = useApiService()
-
-    // const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('TODO_LIST')) || [])
     const [todoList, setTodoList] = useLocalStorage('TODO_LIST', []);
+    const [filteredList, setFilteredList] = useState(todoList)
+    const [searchText, setSearchText] = useState("")
 
     const createTodo = (text) => {
         setTodoList((currentTodoList) => [...currentTodoList, { "id": crypto.randomUUID(), "text": text, "isDone": false }])
@@ -19,14 +17,31 @@ function App() {
         setTodoList((currentTodoList) => currentTodoList.filter(td => td.id !== id))
     }
 
-    // useEffect(() => {
-    //     localStorage.setItem('TODO_LIST', JSON.stringify(todoList))
-    // }, [todoList])
+    // FILTER
+
+    const handleSearch = (text) => {
+        setSearchText(text)
+    }
+
+    useEffect(() => {
+        findTasks()
+    }, [todoList]
+    )
+
+    useEffect(() => {
+        findTasks()
+    }, [searchText]
+    )
+
+    function findTasks() {
+        const newList = todoList.filter((todo) => todo.text.includes(searchText))
+        setFilteredList(newList)
+    }
 
     return (
         <div className='app-container'>
-            <AddTask onCreate={createTodo} />
-            <TodoList todoList={todoList} onDelete={deleteTodo} />
+            <Header onSearch={handleSearch} onCreate={createTodo} />
+            <TodoList todoList={filteredList} onDelete={deleteTodo} />
         </div>
     )
 }

@@ -10,7 +10,7 @@ export default function Search({ onSearch }) {
     useDebounce(() => onSearch(searchValue), 500, [searchValue])
 
     return (
-        <div className="search-container">
+        <div className="search-box">
             <div className="search-icon">
                 <FontAwesomeIcon icon={faSearch} />
             </div>

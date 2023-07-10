@@ -10,6 +10,7 @@ export default function AddTask({ onCreate }) {
     function handleProceed() {
         setShowAddTodoModal(false)
         onCreate(inputRef.current.value)
+        inputRef.current.value = ""
     }
 
     return (
