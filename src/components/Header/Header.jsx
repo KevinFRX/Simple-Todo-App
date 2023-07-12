@@ -1,5 +1,5 @@
-import Search from "./Search"
-import AddTask from "./AddTask"
+import Search from "../Search/Search"
+import AddTask from "../AddTask/AddTask"
 import './Header.css'
 
 export default function Header({onSearch, onCreate}) {

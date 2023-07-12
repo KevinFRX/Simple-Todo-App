@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import useDebounce from './../hooks/useDebounce';
+import useDebounce from '../../hooks/useDebounce';
 
 import './Search.css'
 
@@ -20,6 +21,9 @@ export default function Search({ onSearch }) {
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
             />
+            <button className="x-button" onClick={() => setSearchValue("")}>
+                <FontAwesomeIcon icon={faXmark} />
+            </button>
         </div>
     )
 }

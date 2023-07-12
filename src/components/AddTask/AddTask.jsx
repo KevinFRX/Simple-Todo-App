@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-import ModalDialog from './ModalDialog'
+import ModalDialog from '../ModalDialog/ModalDialog'
 import './AddTask.css'
 
 export default function AddTask({ onCreate }) {
@@ -20,7 +20,7 @@ export default function AddTask({ onCreate }) {
             </div>
 
             <ModalDialog title="Add Task" isOpened={showAddTodoModal} onProceed={handleProceed} onClose={() => setShowAddTodoModal(false)} acceptLabel="Add" cancelLabel="Cancel">
-                <input className="add-task-input" ref={inputRef} type="text" placeholder="A new task" />
+                <input className="dialog-input" ref={inputRef} type="text" placeholder="A new task" />
             </ModalDialog>
         </div>
     )

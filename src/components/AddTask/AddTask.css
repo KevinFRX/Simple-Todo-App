@@ -1,0 +1,13 @@
+.modal {
+    position: fixed;
+    z-index: 1;
+}
+
+.add-task-button {
+    background-color: #f5a962;
+    color: #fff;
+}
+
+.add-task-button:hover {
+    background-color: #f7bc89;
+}

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import useLocalStorage from "./hooks/useLocalStorage"
 
-import Header from "./components/Header";
-import TodoList from './components/TodoList'
+import Header from "./components/Header/Header";
+import TodoList from './components/TodoList/TodoList'
 import './App.css'
 
 function App() {
@@ -12,6 +12,15 @@ function App() {
 
     const createTodo = (text) => {
         setTodoList((currentTodoList) => [...currentTodoList, { "id": crypto.randomUUID(), "text": text, "isDone": false }])
+    }
+    const editTodo = (id, newText) => {
+        setTodoList((currentTodoList) => currentTodoList.map((todo) => {
+            if (todo.id === id) {
+                return { ...todo, text: newText};
+            } else {
+                return todo;
+            }
+        }))
     }
     const deleteTodo = (id) => {
         setTodoList((currentTodoList) => currentTodoList.filter(td => td.id !== id))
@@ -41,7 +50,7 @@ function App() {
     return (
         <div className='app-container'>
             <Header onSearch={handleSearch} onCreate={createTodo} />
-            <TodoList todoList={filteredList} onDelete={deleteTodo} />
+            <TodoList todoList={filteredList} onEdit={editTodo} onDelete={deleteTodo} />
         </div>
     )
 }

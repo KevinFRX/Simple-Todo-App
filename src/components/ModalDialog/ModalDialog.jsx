@@ -26,10 +26,8 @@ function ModalDialog({
   useEffect(() => {
     if (isOpened) {
       ref.current?.showModal();
-      // document.body.classList.add("modal-open"); // prevent bg scroll
     } else {
       ref.current?.close();
-      // document.body.classList.remove("modal-open");
     }
   }, [isOpened]);
 
@@ -47,7 +45,7 @@ function ModalDialog({
         ref.current && !isClickInsideRectangle(e, ref.current) && onClose()
       }
     >
-      <h3>{title}</h3>
+      <h3 className="title">{title}</h3>
 
       <div className="children-container">
         {children}
