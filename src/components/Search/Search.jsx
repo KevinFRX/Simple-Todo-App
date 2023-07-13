@@ -18,6 +18,7 @@ export default function Search({ onSearch }) {
             <input
                 className="search-input"
                 type="text"
+                placeholder="Search..."
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
             />
