@@ -1,4 +1,6 @@
 import { useState, useRef } from "react";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ModalDialog from '../ModalDialog/ModalDialog'
 import './AddTask.css'
@@ -16,7 +18,7 @@ export default function AddTask({ onCreate }) {
     return (
         <div>
             <div>
-                <button className="add-task-button" onClick={() => setShowAddTodoModal(true)}>Add Task</button>
+                <button className="add-task-button" onClick={() => setShowAddTodoModal(true)}><FontAwesomeIcon icon={faPlus} /></button>
             </div>
 
             <ModalDialog title="Add Task" isOpened={showAddTodoModal} onProceed={handleProceed} onClose={() => setShowAddTodoModal(false)} acceptLabel="Add" cancelLabel="Cancel">

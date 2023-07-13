@@ -1,5 +1,6 @@
 import { useState, useRef } from "react"
 import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ModalDialog from '../ModalDialog/ModalDialog'
@@ -46,7 +47,7 @@ export default function Todo({ className, id, text, isDone, onEdit, onDelete, on
             <div className={`todo-text ${isChecked ? "done" : ""}`}>{text}</div>
             <div className="todo-actions">
                 <button className="todo-edit-button" type="button" onClick={() => setShowEditDialog(true)}><FontAwesomeIcon icon={faPen} /></button>
-                <button className="todo-delete-button" type="button" onClick={() => setShowConfirmDelete(true)}>Delete</button>
+                <button className="todo-delete-button" type="button" onClick={() => setShowConfirmDelete(true)}><FontAwesomeIcon icon={faTrash} /></button>
             </div>
         </div>
     )
