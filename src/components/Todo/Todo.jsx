@@ -5,12 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalDialog from '../ModalDialog/ModalDialog'
 import './Todo.css'
 
-export default function Todo({ className, id, text, isDone, onEdit, onDelete }) {
+export default function Todo({ className, id, text, isDone, onEdit, onDelete, onToggleCheck }) {
     const [editValue, setEditValue] = useState(text);
     const [showEditDialog, setShowEditDialog] = useState(false)
     const [showConfirmDelete, setShowConfirmDelete] = useState(false)
     const [isChecked, setIsChecked] = useState(isDone)
     const inputRef = useRef("")
+    const checkboxRef = useRef("")
 
     function handleProceed() {
         onEdit(id, inputRef.current.value)
@@ -19,6 +20,11 @@ export default function Todo({ className, id, text, isDone, onEdit, onDelete }) 
     function handleClose() {
         setShowEditDialog(false)
         setEditValue(text)
+    }
+
+    function handleToggleCheckbox(e) {
+        setIsChecked(checkboxRef.current.checked)
+        onToggleCheck(e)
     }
 
     return (
@@ -31,10 +37,11 @@ export default function Todo({ className, id, text, isDone, onEdit, onDelete }) 
             </ModalDialog>
             <input
                 className="checkbox"
+                ref={checkboxRef}
                 type="checkbox"
                 name="todo-checkbox"
                 checked={isChecked}
-                onChange={(e) => setIsChecked(e.target.checked)}
+                onChange={() => handleToggleCheckbox(id)}
             />
             <div className={`todo-text ${isChecked ? "done" : ""}`}>{text}</div>
             <div className="todo-actions">

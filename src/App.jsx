@@ -16,14 +16,23 @@ function App() {
     const editTodo = (id, newText) => {
         setTodoList((currentTodoList) => currentTodoList.map((todo) => {
             if (todo.id === id) {
-                return { ...todo, text: newText};
+                return { ...todo, text: newText }
             } else {
-                return todo;
+                return todo
             }
         }))
     }
     const deleteTodo = (id) => {
         setTodoList((currentTodoList) => currentTodoList.filter(td => td.id !== id))
+    }
+    const toggleCheck = (id) => {
+        setTodoList((currentTodoList) => currentTodoList.map((todo) => {
+            if (todo.id === id) {
+                return (todo.isDone === false ? { ...todo, isDone: true } : { ...todo, isDone: false })
+            } else {
+                return todo
+            }
+        }))
     }
 
     // FILTER
@@ -50,7 +59,7 @@ function App() {
     return (
         <div className='app-container'>
             <Header onSearch={handleSearch} onCreate={createTodo} />
-            <TodoList todoList={filteredList} onEdit={editTodo} onDelete={deleteTodo} />
+            <TodoList todoList={filteredList} onEdit={editTodo} onDelete={deleteTodo} onToggleCheck={toggleCheck} />
         </div>
     )
 }
