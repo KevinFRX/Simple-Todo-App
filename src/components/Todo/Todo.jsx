@@ -9,12 +9,13 @@ import './Todo.css'
 export default function Todo({ className, id, text, isDone, onEdit, onDelete, onToggleCheck }) {
     const [editValue, setEditValue] = useState(text);
     const [showEditDialog, setShowEditDialog] = useState(false)
-    const [showConfirmDelete, setShowConfirmDelete] = useState(false)
+    const [showConfirmDeleteDialog, setShowConfirmDeleteDialog] = useState(false)
     const [isChecked, setIsChecked] = useState(isDone)
     const checkboxRef = useRef("")
 
     function handleProceed() {
         onEdit(id, editValue)
+        text = editValue // la solución
     }
 
     function handleClose() {
@@ -42,12 +43,12 @@ export default function Todo({ className, id, text, isDone, onEdit, onDelete, on
             <div className={`todo-text ${isChecked ? "done" : ""}`}>{text}</div>
             <div className="todo-actions">
                 <button className="todo-edit-button" type="button" onClick={() => setShowEditDialog(true)}><FontAwesomeIcon icon={faPen} /></button>
-                <button className="todo-delete-button" type="button" onClick={() => setShowConfirmDelete(true)}><FontAwesomeIcon icon={faTrash} /></button>
+                <button className="todo-delete-button" type="button" onClick={() => setShowConfirmDeleteDialog(true)}><FontAwesomeIcon icon={faTrash} /></button>
             </div>
 
             {/* Modals */}
 
-            <ModalDialog title="Delete Task" isOpened={showConfirmDelete} onProceed={onDelete} onClose={() => setShowConfirmDelete(false)} acceptLabel="Accept" cancelLabel="Cancel">
+            <ModalDialog title="Delete Task" isOpened={showConfirmDeleteDialog} onProceed={onDelete} onClose={() => setShowConfirmDeleteDialog(false)} acceptLabel="Accept" cancelLabel="Cancel">
                 <p className="delete-dialog-text">Are you sure you want to delete this task?</p>
             </ModalDialog>
             <ModalDialog title="Edit Task" isOpened={showEditDialog} onProceed={handleProceed} onClose={handleClose} acceptLabel="Save" cancelLabel="Discard">
