@@ -1,7 +1,6 @@
 .todo-container {
     display: flex;
-    border: 5px;
-    margin: 10px 10px 10px 0;
+    margin: 10px;
     padding: 10px;
     align-items: center;
     border-radius: 8px;
